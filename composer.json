@@ -1,0 +1,65 @@
+{
+    "name": "prahsys/laravel-lunar",
+    "description": "Prahsys payment driver for Lunar ecommerce with seamless checkout integration",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["laravel", "lunar", "ecommerce", "payments", "prahsys", "checkout"],
+    "authors": [
+        {
+            "name": "Prahsys Team",
+            "email": "developers@prahsys.com",
+            "homepage": "https://prahsys.com"
+        }
+    ],
+    "homepage": "https://github.com/Prahsys/laravel-lunar",
+    "support": {
+        "issues": "https://github.com/Prahsys/laravel-lunar/issues",
+        "source": "https://github.com/Prahsys/laravel-lunar"
+    },
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.0|^12.0",
+        "lunarphp/core": "^1.0",
+        "prahsys/laravel-clerk": "^1.0"
+    },
+    "require-dev": {
+        "lunarphp/admin": "^1.0",
+        "orchestra/testbench": "^9.0|^10.0",
+        "phpunit/phpunit": "^10.0|^11.0",
+        "laravel/pint": "^1.0",
+        "phpstan/phpstan": "^1.0",
+        "mockery/mockery": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Prahsys\\Lunar\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Prahsys\\Lunar\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/pint",
+        "format-check": "vendor/bin/pint --test",
+        "analyse": "vendor/bin/phpstan analyse"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Prahsys\\Lunar\\LunarPrahsysServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
