@@ -5,6 +5,7 @@ namespace Prahsys\Lunar;
 use Illuminate\Support\ServiceProvider;
 use Lunar\Facades\Payments;
 use Prahsys\Lunar\PaymentTypes\PrahsysPaymentType;
+use Prahsys\Lunar\Drivers\PrahsysPaymentDriver;
 
 class LunarPrahsysServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,7 @@ class LunarPrahsysServiceProvider extends ServiceProvider
             'lunar-prahsys'
         );
 
+        $this->app->singleton(PrahsysPaymentDriver::class);
         $this->app->singleton(PrahsysPaymentType::class);
     }
 
@@ -31,6 +33,11 @@ class LunarPrahsysServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/lunar-prahsys.php' => config_path('lunar-prahsys.php'),
         ], 'lunar-prahsys-config');
+        
+        // Publish views
+        $this->publishes([
+            __DIR__.'/../resources/views' => resource_path('views/vendor/lunar-prahsys'),
+        ], 'lunar-prahsys-views');
 
         // Load routes
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
